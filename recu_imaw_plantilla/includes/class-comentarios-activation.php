@@ -16,7 +16,7 @@ class Comentarios_Activation
     public static function set_plugin_backgroud_color()
     {
         $option_name = '_comentarios_bg_color';
-        $value = 'red';
+        $value = '#ad34e5';
         update_option($option_name, $value);
     }
 

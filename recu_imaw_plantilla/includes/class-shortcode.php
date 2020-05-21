@@ -25,8 +25,14 @@ class Comentarios_shortcode
                 foreach ($comments as $comment) {
                 ?>
                     <tr>
-                        <td><?php echo $comment->comment_author ?></td>
-                        <td><?php echo $comment->comment_date ?></td>
+                        <td>
+                            <?php echo $comment->comment_author ?>
+                        </td>
+                        <td 
+                            <?php echo "title='$comment->comment_content'"  ?>
+                        >
+                            <?php echo $comment->comment_date ?>
+                        </td>
                         <td>
                             <?php
                             $actionLink = home_url() . '?deleteId=' . $comment->comment_id;
@@ -49,7 +55,7 @@ class Comentarios_shortcode
                                                 <img alt='aprovar' src='$appr_img' width='30' />
                                             </a>";
                             } else {
-                                echo "";
+                                echo "Aprobado";
                             }
 
                             ?>
@@ -103,7 +109,7 @@ class Comentarios_shortcode
     {
         global $wpdb;
         $prefix = $wpdb->prefix;
-        $query = "select comment_id, comment_author, comment_date, comment_approved from " . $prefix . "comments";
+        $query = "select comment_id, comment_author, comment_date, comment_approved, comment_content from " . $prefix . "comments";
         $results = $wpdb->get_results($query);
         return $results;
     }
