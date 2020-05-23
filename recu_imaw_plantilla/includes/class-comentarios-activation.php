@@ -20,6 +20,14 @@ class Comentarios_Activation
         update_option($option_name, $value);
     }
 
+    // not optimal implementation but xd
+    public static function delete_plugin_options()
+    {
+        delete_option('_comentarios_bg_color');
+        delete_option('approve_img');
+        delete_option('delete_img');
+    }
+
     public static function upload_images()
     {
         update_option('approve_img', "approve.png");
