@@ -76,5 +76,6 @@ class Comentarios{
         wp_enqueue_style( 'wp-color-picker' );
         wp_enqueue_script( 'my-script-handle', plugins_url('js/my-script.js', __DIR__ ), array( 'wp-color-picker' ), false, true );
      }
+     
 
 }

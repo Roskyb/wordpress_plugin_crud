@@ -23,12 +23,13 @@ class Comentarios_Widget extends WP_Widget
             $bg = get_option('_comentarios_bg_color');
             echo "  style='background-color: $bg; 
                             border-radius: 25px; 
-                            list-style:none; padding: 2%;
-                            color: white;'";
+                            list-style:none; 
+                            color: white;
+                            display:flex'";
             ?>>
-            <li style="padding: 2%;">Comentarios</li>
-            <li style="padding: 2%;">Comentarios(total): <?php echo $total ?>.</li>
-            <li style="padding: 2%;">Comentarios(sin aprobar):<?php echo  $unapproved ?>.</li>
+            <li style="padding-bottom: 2%;">Comentarios</li>
+            <li style="padding-bottom: 2%;">Comentarios(total): <?php echo $total ?>.</li>
+            <li style="padding-bottom: 2%;">Comentarios(sin aprobar):<?php echo  $unapproved ?>.</li>
         </ul>
 <?php
     }

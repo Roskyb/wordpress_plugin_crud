@@ -12,6 +12,7 @@ class Comentarios_shortcode
         $bg_color = get_option('_comentarios_bg_color');
 ?>
         <table style=" text-align: center;">
+        <form action="" method="post">
             <thead <?php echo "style='background-color: $bg_color'"; ?>>
                 <th>USER</th>
                 <th>DATE</th>
@@ -36,13 +37,16 @@ class Comentarios_shortcode
                         <td>
                             <?php
                             $actionLink = home_url() . '?deleteId=' . $comment->comment_id;
-                            echo "  <a href='$actionLink' 
-                                            style=' display: flex;
-                                                    justify-content: center;'
-                                        >
-                                            <img alt='borrar' src='$del_img' width='30' />
-                                        </a>"
+                            $com_id = $comment->comment_id;
+                            // echo "  <a href='$actionLink' 
+                            //                 style=' display: flex;
+                            //                         justify-content: center;'
+                            //             >
+                            //                 <img alt='borrar' src='$del_img' width='30' />
+                            //             </a>"
+                            echo "<input type='image' src='$del_img' alt='Submit' name='del' value='$com_id'>";
                             ?>
+                            
                         </td>
                         <td>
                             <?php
@@ -67,6 +71,7 @@ class Comentarios_shortcode
 
                 ?>
             </tbody>
+            </form>
         </table>
 <?php
 
@@ -74,8 +79,16 @@ class Comentarios_shortcode
 
     public function perfomaceAction()
     {
-        if (isset($_GET['deleteId'])) {
-            $this->deleteComment($_GET['deleteId']);
+        // if (isset($_GET['deleteId'])) {
+        //     $this->deleteComment($_GET['deleteId']);
+        // } else {
+        //     if (isset($_GET['updateId'])) {
+        //         $this->updateComment($_GET['updateId']);
+        //     }
+        // }
+
+        if (isset($_POST['del'])) {
+            $this->deleteComment($_POST['del']);
         } else {
             if (isset($_GET['updateId'])) {
                 $this->updateComment($_GET['updateId']);
